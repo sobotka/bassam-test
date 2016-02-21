@@ -336,6 +336,22 @@ looks:
       - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
 
   - !<Look>
+    name: Team Argentina -10-+6.5 Desaturation Sharp 1.6
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
+      - !<FileTransform> {src: LMT_Power_16.spi1d, interpolation: linear}
+
+  - !<Look>
+    name: Team Argentina -10-+6.5 Desaturation Sharp 1.8
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
+      - !<FileTransform> {src: LMT_Power_18.spi1d, interpolation: linear}
+
+  - !<Look>
     name: Team Argentina -10-+6.5 Desaturation Sharp 2.0
     process_space: aces_lmt
     transform: !<GroupTransform>
