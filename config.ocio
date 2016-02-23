@@ -290,6 +290,21 @@ colorspaces:
     to_reference: !<FileTransform> {src: srgb.spi1d, interpolation: linear}
 
   - !<ColorSpace>
+    name: sRGB Albedo
+    family:
+    equalitygroup:
+    bitdepth: 32f
+    description: |
+      Standard RGB Display Space
+    isdata: false
+    allocation: uniform
+    allocationvars: [-0.125, 4.875]
+    to_reference: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: sRGB-albedo.spi1d, interpolation: linear}
+      ##- !<FileTransform> {src: srgb.spi1d, interpolation: linear}
+
+  - !<ColorSpace>
     name: VD16
     family: vd
     equalitygroup:
