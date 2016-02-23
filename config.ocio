@@ -302,7 +302,7 @@ colorspaces:
     to_reference: !<GroupTransform>
       children:
       - !<FileTransform> {src: sRGB-albedo.spi1d, interpolation: linear}
-      ##- !<FileTransform> {src: srgb.spi1d, interpolation: linear}
+      - !<FileTransform> {src: srgb.spi1d, interpolation: linear, direction: inverse}
 
   - !<ColorSpace>
     name: VD16
