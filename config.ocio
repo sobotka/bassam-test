@@ -31,32 +31,14 @@ roles:
 
 displays:
   sRGB:
-    - !<View> {name: Default, colorspace: sRGB}
-    - !<View> {name: RRT, colorspace: rrt_srgb}
-    - !<View> {name: Film, colorspace: srgb8}
+    - !<View> {name: sRGB, colorspace: sRGB}
     - !<View> {name: Raw, colorspace: Raw}
-    - !<View> {name: Log, colorspace: lg10}
     - !<View> {name: -10-+6.5 View, colorspace: aces_lmt}
-#    - !<View> {name: 6.5 Bassam Filmlike View, colorspace: bassam_film}
-#    - !<View> {name: 8.5 Team Argentina View, colorspace: argentina_lmt}
-  DCI-P3:
-    - !<View> {name: RRT, colorspace: rrt_p3dci}
-    - !<View> {name: Film, colorspace: p3dci8}
-    - !<View> {name: Raw, colorspace: Raw}
-    - !<View> {name: Log, colorspace: adx10}
-  Rec709:
-    - !<View> {name: Default, colorspace: nuke_rec709}
-    - !<View> {name: RRT, colorspace: rrt_rec709}
-  XYZ:
-    - !<View> {name: Default, colorspace: XYZ}
-    - !<View> {name: RRT, colorspace: rrt_xyz}
-    - !<View> {name: DCI, colorspace: dci_xyz}
-    - !<View> {name: Raw, colorspace: Raw}
-    - !<View> {name: Log, colorspace: adx10}
+
   None:
     - !<View> {name: Default, colorspace: Raw}
 
-active_displays: [sRGB, DCIP3, Rec709, XYZ, None]
+active_displays: [sRGB, None]
 active_views: [Default, RRT, Raw, Log]
 
 colorspaces:
@@ -81,38 +63,6 @@ colorspaces:
     allocationvars: [0, 1]
 
   - !<ColorSpace>
-    name: adx10
-    family: display
-    equalitygroup:
-    bitdepth: 10ui
-    description: |
-      Film Scan, using the 10-bit Academy Density Encoding
-
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    to_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: adx_adx10_to_cdd.spimtx}
-        - !<FileTransform> {src: adx_cdd_to_cid.spimtx}
-        - !<FileTransform> {src: adx_cid_to_rle.spi1d, interpolation: linear}
-        - !<LogTransform> {base: 10, direction: inverse}
-        - !<FileTransform> {src: adx_exp_to_aces.spimtx}
-        - !<FileTransform> {src: rec709_to_aces.spimtx, interpolation: linear, direction: inverse}
-
-  - !<ColorSpace>
-    name: Linear ACES
-    family:
-    equalitygroup:
-    bitdepth: 32f
-    description: |
-      ACES linear space
-    isdata: false
-    allocation: lg2
-    allocationvars: [-8.5, 5]
-    to_reference: !<FileTransform> {src: rec709_to_aces.spimtx, interpolation: linear, direction: inverse}
-
-  - !<ColorSpace>
     name: aces_lmt
     family:
     equalitygroup:
@@ -123,159 +73,6 @@ colorspaces:
     allocation: lg2
     allocationvars: [-10, 6.5, 0.00390625]
     to_reference: !<FileTransform> {src: LMT_Shaper_to_linear.spi1d, interpolation: linear}
-
-  - !<ColorSpace>
-    name: bassam_film
-    family:
-    equalitygroup:
-    bitdepth: 32f
-    description: |
-      Bassam Custom 6.5 stop curve above middle grey, with filmic desaturation.
-    isdata: false
-    allocation: lg2
-    allocationvars: [-10, 6.5, 0.00390625]
-    from_reference: !<GroupTransform> 
-      children:
-        - !<FileTransform> {src: LMT_Shaper_to_linear.spi1d, interpolation: linear, direction: inverse}
-        - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
-
-  - !<ColorSpace>
-    name: argentina_lmt
-    family:
-    equalitygroup:
-    bitdepth: 32f
-    description: |
-      Custom LMT 8.5 stops above and below middle grey.
-    isdata: false
-    allocation: lg2
-    allocationvars: [-8.5, 8.5, 0.00390625]
-    to_reference: !<FileTransform> {src: LMT_17StopShaper_to_linear.spi1d, interpolation: linear}
-
-#    
-# - !<ColorSpace>
-#    name: rrt_srgb
-#    family: rrt
-#    equalitygroup:
-#    bitdepth: 32f
-#    isdata: false
-#    allocation: uniform
-#    allocationvars: [0, 1]
-#    from_reference: !<GroupTransform>
-#      children:
-#        - !<FileTransform> {src: rec709_to_aces.spimtx, interpolation: nearest}
-#        - !<AllocationTransform> {allocation: lg2, vars: [-8.5, 5]}
-#        - !<FileTransform> {src: rrt_ut33_sRGB.spi3d, interpolation: tetrahedral}
-
-  - !<ColorSpace>
-    name: nuke_rec709
-    family: display
-    equalitygroup:
-    bitdepth: 32f
-    description: |
-      Rec. 709 (Full Range) Display Space
-    isdata: false
-    allocation: uniform
-    allocationvars: [-0.125, 1.125]
-    to_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: rec709.spi1d, interpolation: linear}
-
-  - !<ColorSpace>
-    name: rrt_rec709
-    family: rrt
-    equalitygroup:
-    bitdepth: 32f
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    from_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: rec709_to_aces.spimtx, interpolation: nearest}
-        - !<AllocationTransform> {allocation: lg2, vars: [-8.5, 5]}
-        - !<FileTransform> {src: rrt_ut33_rec709.spi3d, interpolation: tetrahedral}
-
-  - !<ColorSpace>
-    name: rrt_p3dci
-    family: rrt
-    equalitygroup:
-    bitdepth: 32f
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    from_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: rec709_to_aces.spimtx, interpolation: nearest}
-        - !<AllocationTransform> {allocation: lg2, vars: [-8.5, 5]}
-        - !<FileTransform> {src: rrt_ut33_p3dci.spi3d, interpolation: tetrahedral}
-
-  - !<ColorSpace>
-    name: XYZ
-    family:
-    equalitygroup:
-    bitdepth: 32f
-    isdata: false
-    allocation: lg2
-    allocationvars: [-8.5, 5]
-    from_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: rec709_to_aces.spimtx, interpolation: linear}
-        - !<FileTransform> {src: aces_to_xyz.spimtx, interpolation: linear}
-
-  - !<ColorSpace>
-    name: rrt_xyz
-    family: rrt
-    equalitygroup:
-    bitdepth: 32f
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    from_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: rec709_to_aces.spimtx, interpolation: nearest}
-        - !<AllocationTransform> {allocation: lg2, vars: [-8.5, 5]}
-        - !<FileTransform> {src: rrt_ut33_dcdm.spi3d, interpolation: tetrahedral}
-
-  - !<ColorSpace>
-    name: dci_xyz
-    family: display
-    equalitygroup:
-    bitdepth: 16f
-    description: |
-      OpenDCP output LUT with DCI reference white and Gamma 2.6
-    isdata: false
-    allocation: uniform
-    allocationvars: [0, 1]
-    from_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: srgb_to_xyz.spimtx, interpolation: linear}
-        - !<FileTransform> {src: dci_xyz.spi1d, interpolation: linear}
-
-  - !<ColorSpace>
-    name: lg10
-    family: display
-    equalitygroup:
-    bitdepth: 10ui
-    description: |
-      conversion from film log
-    isdata: false
-    allocation: uniform
-    to_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: lg10.spi1d, interpolation: nearest}
-
-  - !<ColorSpace>
-    name: srgb8
-    family: display
-    equalitygroup:
-    bitdepth: 8ui
-    description: |
-      RGB display space for the sRGB standard.
-    isdata: false
-    allocation: uniform
-    from_reference: !<GroupTransform>
-      children:
-        - !<ColorSpaceTransform> {src: Linear, dst: lg10}
-        - !<FileTransform> {src: spi_ocio_srgb_test.spi3d, interpolation: linear}
 
   - !<ColorSpace>
     name: sRGB
@@ -290,34 +87,6 @@ colorspaces:
     to_reference: !<FileTransform> {src: srgb.spi1d, interpolation: linear}
 
   - !<ColorSpace>
-    name: sRGB Albedo
-    family:
-    equalitygroup:
-    bitdepth: 32f
-    description: |
-      Standard RGB Display Space
-    isdata: false
-    allocation: uniform
-    allocationvars: [-0.125, 4.875]
-    to_reference: !<GroupTransform>
-      children:
-      - !<FileTransform> {src: sRGB-albedo.spi1d, interpolation: linear}
-      - !<FileTransform> {src: srgb.spi1d, interpolation: linear, direction: inverse}
-
-  - !<ColorSpace>
-    name: VD16
-    family: vd
-    equalitygroup:
-    bitdepth: 16ui
-    description: |
-      The simple video conversion from a gamma 2.2 sRGB space
-    isdata: false
-    allocation: uniform
-    to_reference: !<GroupTransform>
-      children:
-        - !<FileTransform> {src: vd16.spi1d, interpolation: nearest}
-
-  - !<ColorSpace>
     name: Non-Color
     family: raw
     description: |
@@ -327,20 +96,6 @@ colorspaces:
     isdata: true
     allocation: uniform
     allocationvars: [0, 1]
-
-  - !<ColorSpace>
-    name: p3dci8
-    family: display
-    equalitygroup:
-    bitdepth: 8ui
-    description: |
-      p3dci8 :rgb display space for gamma 2.6 P3 projection.
-    isdata: false
-    allocation: uniform
-    from_reference: !<GroupTransform>
-      children:
-        - !<ColorSpaceTransform> {src: Linear, dst: lg10}
-        - !<FileTransform> {src: colorworks_filmlg_to_p3.3dl, interpolation: linear}
 
 looks:
   - !<Look>
