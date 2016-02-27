@@ -36,10 +36,10 @@ displays:
     - !<View> {name: -10-+6.5 View, colorspace: aces_lmt}
 
   None:
-    - !<View> {name: Default, colorspace: Raw}
+    - !<View> {name: No View, colorspace: Raw}
 
 active_displays: [sRGB, None]
-active_views: [Default, RRT, Raw, Log]
+active_views: [-10-+6.5 View, No View]
 
 colorspaces:
   - !<ColorSpace>
