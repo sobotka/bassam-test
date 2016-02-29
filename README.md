@@ -2,7 +2,11 @@
 
 Adds a photographic view transform for Blender. It is the ACES Shaper LMT that grabs ten stops below middle grey
 and six and a half stops over middle grey. Middle grey is pegged at 0.18, which maps to approximately 0.62
-display referred.
+display referred. Simply by using it your can elevate your work by an order of a magnitude. To quote Alex Fry:
+
+> "With modern physically-based renderers, realism suffers if things aren't set up in a way that mirrors the real > world. Therefore, no matter how physically accurate your renderer is, if you build a universe where the sun 
+> outside, and a character inside both have to live in the narrow band between 0->1, nothing will respond
+> realistically.”
 
 **How do I use it?**
 
@@ -46,5 +50,16 @@ in Properties.
    * Six Stops Over = Red        = 1.139491214E+1 SL 6.994287888E-1 N
    * High Clipping = White       = 1.629174024E+1 SL 1.000000000E+0 N
 
-
-
+**Help! Grading is tricky!**
+The following is a brief list of cautionary bits for imagers while working on scene referred data:
+ * Blender desperately needs independent colour transform controls on every UI element. Using this set of LUTs should make it abundently clear.
+ * For the past decade or so, Blender's basic mixing node has been broken with regards to certain AdobePDF blend modes, as they are strictly display referred. Screen, Burn, Dodge, Overlay, and a few others are strictly display referred blend modes, and will not work on scene referred data.
+ * Lift, Gamma, and Gain is a strictly display referred tool. It will not work with scene referred data.
+ * Curves. While curves work fine, without the specific colour transformation selection, it is very tricky. Middle
+grey lives at 0.18, which gives you approximately 18% of the UI's interface region to adjust a curve that will
+result in tweaking ten stops of your most critical latitude.
+**I get it, Blender's broken in fundamental ways. Solutions?**
+The ASC CDL transform was designed to operate on both display referred and scene linear imagery. It is found in
+the Colour Correction node where *Lift, Gamma, Gain* is listed. Change it to the ASC CDL, adjust Power up to
+compensate for the log viewing in the basic view version, and possibly tweak Slope down. Offset will literally
+offset values up or down, which is likely sub-optimal in CGI. Adjust your lighting if you can.
