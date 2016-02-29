@@ -51,6 +51,7 @@ in Properties.
    * High Clipping = White       = 1.629174024E+1 SL 1.000000000E+0 N
 
 **Help! Grading is tricky!**
+
 The following is a brief list of cautionary bits for imagers while working on scene referred data:
  * Blender desperately needs independent colour transform controls on every UI element. Using this set of LUTs should make it abundently clear.
  * For the past decade or so, Blender's basic mixing node has been broken with regards to certain AdobePDF blend modes, as they are strictly display referred. Screen, Burn, Dodge, Overlay, and a few others are strictly display referred blend modes, and will not work on scene referred data.
@@ -58,7 +59,9 @@ The following is a brief list of cautionary bits for imagers while working on sc
  * Curves. While curves work fine, without the specific colour transformation selection, it is very tricky. Middle
 grey lives at 0.18, which gives you approximately 18% of the UI's interface region to adjust a curve that will
 result in tweaking ten stops of your most critical latitude.
+
 **I get it, Blender's broken in fundamental ways. Solutions?**
+
 The ASC CDL transform was designed to operate on both display referred and scene linear imagery. It is found in
 the Colour Correction node where *Lift, Gamma, Gain* is listed. Change it to the ASC CDL, adjust Power up to
 compensate for the log viewing in the basic view version, and possibly tweak Slope down. Offset will literally
