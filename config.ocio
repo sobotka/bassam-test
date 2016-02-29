@@ -157,3 +157,10 @@ looks:
       children:
       - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
       - !<FileTransform> {src: LMT_Power_24.spi1d, interpolation: linear}
+
+  - !<Look>
+    name: False Colour Basic
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: aces-false-colour.spi3d, interpolation: best}
