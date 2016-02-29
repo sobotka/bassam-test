@@ -164,3 +164,12 @@ looks:
     transform: !<GroupTransform>
       children:
       - !<FileTransform> {src: aces-false-colour.spi3d, interpolation: best}
+
+  - !<Look>
+    name: False Colour Basic Desaturation
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
+      - !<FileTransform> {src: aces-false-colour.spi3d, interpolation: best}
+
