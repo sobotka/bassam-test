@@ -22,19 +22,19 @@ in Properties.
  approximately 0.467 scene referred. It covers six and a bit stops down to approximately two and a bit stops over
  middle grey. It is unsuitable for a rendering view.
  
- **Looks**
-  * *None* This removes any additional transforms on the view.
-  * *Team Argentina -10-+6.5 Desaturation Basic* This view adds a convergence point towards display referred white.
+**Looks**
+ * *None* This removes any additional transforms on the view.
+ * *Team Argentina -10-+6.5 Desaturation Basic* This view adds a convergence point towards display referred white.
   The curve towards white begins at scene referred value 3.0 and converges all primaries towards white as their
   intensity approaches scene referred 16.291. This emulates a basic filmic / DSLR "blow out" and helps shape
   all colours to desaturate correctly, as opposed to without any desaturation / convergence / unity point.
-  * *Team Argentina -10-+6.5 Desaturation Sharp 1.6-2.4* This is a range of looks that, in addition to the basic
+ * *Team Argentina -10-+6.5 Desaturation Sharp 1.6-2.4* This is a range of looks that, in addition to the basic
   desaturation described above, adds on an additional power curve to add contrast. This is designed to give
   imagers a basic idea as to what a grade might look like when modified atop of the basic view with desaturation.
-  * *Greyscale on Desaturation* This is a greyscale preview of the desaturated look helpful for evaluating
+ * *Greyscale on Desaturation* This is a greyscale preview of the desaturated look helpful for evaluating
   contrast and other details in some contexts.
-  * *Greyscale* This is a greyscale preview without the desaturation look applied. As above.
-  * *False Colour Basic* This is a false colour "heat map" of exposure. The colour scheme is as follows:
+ * *Greyscale* This is a greyscale preview without the desaturation look applied. As above.
+ * *False Colour Basic* This is a false colour "heat map" of exposure. The colour scheme is as follows:
    * Low Clipping = Black        = 1.762728758E-4 SL 1.081976960E-5 N
    * Nine Stops Down = Purple    = 3.513840218E-4 SL 2.156823131E-5 N
    * Eight Stops Down = Blue     = 7.024112686E-4 SL 4.311456347E-5 N
