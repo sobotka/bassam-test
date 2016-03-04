@@ -65,4 +65,4 @@ result in tweaking ten stops of your most critical latitude.
 The ASC CDL transform was designed to operate on both display referred and scene linear imagery. It is found in
 the Colour Correction node where *Lift, Gamma, Gain* is listed. Change it to the ASC CDL, adjust Power up to
 compensate for the log viewing in the basic view version, and possibly tweak Slope down. Offset will literally
-offset values up or down, which is likely sub-optimal in CGI. Adjust your lighting if you can.
+offset values up or down, which is likely sub-optimal in CGI. Adjust your lighting if you can. It should also be noted that the UI representation for the CDL is very limited. Due to operating on scene referred data, you may find that you will have to push Power up beyond the UI interface sliders. This can be acoomplished by using the data entry values, as opposed to the sliders. Also note that operating on the scene referred range may require extremely granular controls when using Slope and Offset for example. The [Shift] key may help here when trying to gradually adjust a value in the numerical inputs.
