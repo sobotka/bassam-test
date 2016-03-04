@@ -44,7 +44,7 @@ Given that the dynamic range of capture of your imagery is immediately augmented
    * Eight Stops Down = Blue     = 7.024112686E-4 SL 4.311456347E-5 N
    * Six Stops Down = Cyan       = 2.814643098E-3 SL 1.727650366E-4 N
    * Two Stops Down = Green      = 4.456791864E-2 SL 2.735614366E-3 N
-   * Middle Grey = Green         = 1.800914272E-1 SL 1.105415533E-2 N
+   * Middle Grey = Gray          = 1.800914272E-1 SL 1.105415533E-2 N
    * Two Stops Over = Green      = 7.196344767E-1 SL 4.417173771E-2 N
    * Four Stops Over = Yellow    = 2.883658483E+0 SL 1.770012559E-1 N
    * Six Stops Over = Red        = 1.139491214E+1 SL 6.994287888E-1 N
