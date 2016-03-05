@@ -34,6 +34,7 @@ displays:
     - !<View> {name: sRGB, colorspace: sRGB}
     - !<View> {name: Raw, colorspace: Raw}
     - !<View> {name: -10-+6.5 View, colorspace: aces_lmt}
+    - !<View> {name: -10-+6.5 View with Scale, colorspace: aces_lmt_scale}
 
   None:
     - !<View> {name: No View, colorspace: Raw}
@@ -75,6 +76,21 @@ colorspaces:
     to_reference: !<FileTransform> {src: LMT_Shaper_to_linear.spi1d, interpolation: linear}
 
   - !<ColorSpace>
+    name: aces_lmt_scale
+    family:
+    equalitygroup:
+    bitdepth: 32f
+    description: |
+      ACES LMT 6.5 stop curve above middle grey.
+    isdata: false
+    allocation: lg2
+    allocationvars: [-10, 6.5, 0.00390625]
+    from_reference: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: LMT_Shaper_to_linear.spi1d, interpolation: linear, direction: inverse}
+      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
+
+  - !<ColorSpace>
     name: sRGB
     family:
     equalitygroup:
@@ -104,6 +120,14 @@ looks:
     transform: !<GroupTransform>
       children:
       - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
+
+  - !<Look>
+    name: Desaturation Basic + Scale
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
+      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
 
   - !<Look>
     name: Greyscale - sRGB / 709 Primaries
