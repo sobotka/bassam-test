@@ -28,6 +28,7 @@ Given that the dynamic range of capture of your imagery is immediately augmented
  
 **Looks**
  * *None* This removes any additional transforms on the view.
+ * *Scaled sRGB Grey variants* Some folks were having fits with the fact that the default view maps 0.18 middle grey to 0.606 in the display referred domain. This means that if you load an sRGB texture into Cycles, the middle grey point would be shifted away from the usual sRGB point of 0.466 that imagers expected. To alleviate this mental strain that is easily shifted during grading, the sRGB scaled grey variants were added as "training wheels". This allows an imager to confidently look at the various scaled looks to check on sRGB texture ratio mappings.
  * *Team Argentina -10-+6.5 Desaturation Basic* This view adds a convergence point towards display referred white.
   The curve towards white begins at scene referred value 3.0 and converges all primaries towards white as their
   intensity approaches scene referred 16.291. This emulates a basic filmic / DSLR "blow out" and helps shape
