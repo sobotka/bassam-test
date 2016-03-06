@@ -1,7 +1,7 @@
 **What it does?**
 
 Adds a photographic view transform for Blender. It is the ACES Shaper LMT that grabs ten stops below middle grey
-and six and a half stops over middle grey. Middle grey is pegged at 0.18, which maps to approximately 0.62
+and six and a half stops over middle grey. Middle grey is pegged at 0.18, which maps to approximately 0.6
 display referred. Simply by using it your can elevate your work by an order of a magnitude. To quote Alex Fry:
 
 > "With modern physically-based renderers, realism suffers if things aren't set up in a way that mirrors the real > world. Therefore, no matter how physically accurate your renderer is, if you build a universe where the sun 
