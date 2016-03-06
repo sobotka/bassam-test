@@ -8,8 +8,6 @@ search_path: luts
 strictparsing: true
 luma: [0.2126, 0.7152, 0.0722]
 
-description: RRT version ut33
-
 roles:
   reference: Linear
 
@@ -73,6 +71,21 @@ colorspaces:
     allocation: lg2
     allocationvars: [-10, 6.5, 0.00390625]
     to_reference: !<FileTransform> {src: LMT_Shaper_to_linear.spi1d, interpolation: linear}
+    
+  - !<ColorSpace>
+    name: Alexa CameraNative
+    family:
+    equalitygroup:
+    bitdepth: 32f
+    description: |
+      Alexa SceneLinear_CameraNative encoded.
+    isdata: false
+    allocation: lg2
+    allocationvars: [-10, 6.5, 0.00390625]
+    to_reference: !<GroupTransform>
+      children:
+      - !<MatrixTransform> {matrix: [0.638008, 0.291954, 0.002798, 0, 0.214704, 0.823841, -0.067034, 0, 0.097744, -0.115795, 1.153294, 0, 0, 0, 0, 1]}
+      - !<MatrixTransform> {matrix: [3.2404542, -1.5371385, -0.4985314, 0, -0.9692660,  1.8760108,  0.0415560, 0, 0.0556434, -0.2040259, 1.0572252, 0, 0, 0, 0, 1]}
 
   - !<ColorSpace>
     name: sRGB
