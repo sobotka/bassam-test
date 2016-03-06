@@ -4,11 +4,9 @@
 
 ocio_profile_version: 1
 
-search_path: luts
+search_path: "looks:luts"
 strictparsing: true
 luma: [0.2126, 0.7152, 0.0722]
-
-description: RRT version ut33
 
 roles:
   reference: Linear
@@ -98,6 +96,14 @@ colorspaces:
     allocationvars: [0, 1]
 
 looks:
+  - !<Look>
+    name: Bassam Shot
+    process_space: Linear 
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: "wfe-${SHOT}.cc"}
+      - !<ColorSpaceTransform> {src: Linear, dst: aces_lmt}
+
   - !<Look>
     name: Team Argentina -10-+6.5 Desaturation Basic
     process_space: aces_lmt
