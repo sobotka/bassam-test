@@ -105,6 +105,47 @@ looks:
       children:
       - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
 
+
+  - !<Look>
+    name: Scaled sRGB Grey with Desaturation with Sharp 2.2
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
+      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
+      - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
+
+  - !<Look>
+    name: Scaled sRGB Grey with Sharp 2.2
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
+      - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
+
+  - !<Look>
+    name: Scaled sRGB Grey with Desaturation
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
+      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
+
+  - !<Look>
+    name: False Colour Basic
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: aces-false-colour.spi3d, interpolation: best}
+
+  - !<Look>
+    name: False Colour Basic Desaturation
+    process_space: aces_lmt
+    transform: !<GroupTransform>
+      children:
+      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
+      - !<FileTransform> {src: aces-false-colour.spi3d, interpolation: best}
+
   - !<Look>
     name: Greyscale - sRGB / 709 Primaries
     process_space: aces_lmt
@@ -176,31 +217,6 @@ looks:
       - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
 
   - !<Look>
-    name: Scaled sRGB Grey with Desaturation with Sharp 2.2
-    process_space: aces_lmt
-    transform: !<GroupTransform>
-      children:
-      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
-      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
-      - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
-
-  - !<Look>
-    name: Scaled sRGB Grey with Sharp 2.2
-    process_space: aces_lmt
-    transform: !<GroupTransform>
-      children:
-      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
-      - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
-
-  - !<Look>
-    name: Scaled sRGB Grey with Desaturation
-    process_space: aces_lmt
-    transform: !<GroupTransform>
-      children:
-      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
-      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
-
-  - !<Look>
     name: Team Argentina -10-+6.5 No Desaturation Sharp 2.2
     process_space: aces_lmt
     transform: !<GroupTransform>
@@ -223,19 +239,4 @@ looks:
       children:
 #      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
       - !<FileTransform> {src: LMT_Power_24.spi1d, interpolation: linear}
-
-  - !<Look>
-    name: False Colour Basic
-    process_space: aces_lmt
-    transform: !<GroupTransform>
-      children:
-      - !<FileTransform> {src: aces-false-colour.spi3d, interpolation: best}
-
-  - !<Look>
-    name: False Colour Basic Desaturation
-    process_space: aces_lmt
-    transform: !<GroupTransform>
-      children:
-      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
-      - !<FileTransform> {src: aces-false-colour.spi3d, interpolation: best}
 
