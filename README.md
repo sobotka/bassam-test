@@ -1,5 +1,7 @@
 **What it does?**
 
+The “Default” view transform, also known as the specification transfer curve for sRGB was **never designed to be used for raytracing / rendering**.
+
 Adds a photographic view transform for Blender. It is the ACES Shaper LMT that grabs ten stops below middle grey
 and six and a half stops over middle grey. Middle grey is pegged at 0.18, which maps to approximately 0.6
 display referred. Simply by using it your can elevate your work by an order of a magnitude. To quote Alex Fry:
