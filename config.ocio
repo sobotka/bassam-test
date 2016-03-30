@@ -39,7 +39,7 @@ displays:
     - !<View> {name: No View, colorspace: Raw}
 
 active_displays: [sRGB, None]
-active_views: [-10-+6.5 View, No View]
+active_views: [sRGB, No View]
 
 colorspaces:
   - !<ColorSpace>
