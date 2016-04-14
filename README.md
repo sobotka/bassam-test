@@ -54,6 +54,7 @@ Given that the dynamic range of capture of your imagery is immediately augmented
    * High Clipping = White       = 1.629174024E+1 SL 1.000000000E+0 N
 
 **Eeek! Now my render looks awful!**
+
 When you use the -10+6.5 view LUT you'll find that your rendered output looks flat, washed out and desaturated.
 This is because the view has a logarithmic contrast curve which looks nowhere near the usual S-shaped contrast curve you find in the default sRGB view.
 The goal of this view is not providing a perceptually uniform image, but visual data about the exposure along the captured 16.5 stops from your scene's dynamic range. With this log view you'll be able to judge your lighting better, and determine whether your scene is properly exposed or not.
