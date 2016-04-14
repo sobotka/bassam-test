@@ -53,6 +53,14 @@ Given that the dynamic range of capture of your imagery is immediately augmented
    * Six Stops Over = Red        = 1.139491214E+1 SL 6.994287888E-1 N
    * High Clipping = White       = 1.629174024E+1 SL 1.000000000E+0 N
 
+**Eeek! Now my render looks awful!**
+When you use the -10+6.5 view LUT you'll find that your rendered output looks flat, washed out and desaturated.
+This is because the view has a logarithmic contrast curve which looks nowhere near the usual S-shaped contrast curve you find in the default sRGB view.
+The goal of this view is not providing a perceptually uniform image, but visual data about the exposure along the captured 16.5 stops from your scene's dynamic range. With this log view you'll be able to judge your lighting better, and determine whether your scene is properly exposed or not.
+It takes some time to get used to work with this kind of data, but meanwhile you can use one of the available sharpener looks that will apply a more perceptually uniform (hence more familiar) appearance.
+You can also use the false-color looks to get a visual representation of the exposure of your scene (where is middle gray, what is overexposed and underexposed, etc.)
+Keep in mind that in the lighting stage you're only taking care of the correct light exposure on your scene, not the final look. Once your scene is properly lit, you can accomplish the desired look through grading.
+
 **Help! Grading is tricky!**
 
 The following is a brief list of cautionary bits for imagers while working on scene referred data:
