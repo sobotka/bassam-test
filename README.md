@@ -36,16 +36,16 @@ Given that the dynamic range of capture of your imagery is immediately augmented
  * *Greyscale on Desaturation* This is a greyscale preview of the desaturated look helpful for evaluating contrast and other details in some contexts.
  * *Greyscale* This is a greyscale preview without the desaturation look applied. As above.
  * *False Colour Basic* This is a false colour "heat map" of exposure. The colour scheme is as follows:
- * * Low Clipping = Black        Scene Linear value 0.000176272 and below
-   * Nine Stops Down = Purple    Scene Linear value 0.000351384 to 0.000702411.
-   * Eight Stops Down = Blue     Scene Linear value 0.000702411 to 0.002814643.
-   * Six Stops Down = Cyan       Scene Linear value 0.002814643 to 0.044567918.
-   * Two Stops Down = Green      Scene Linear value 0.044567918 to 0.018009142.
-   * Middle Grey = Gray          Scene Linear value 0.018009142.
-   * Two Stops Over = Green      Scene Linear value 0.719634476 to 2.883658483.
-   * Four Stops Over = Yellow    Scene Linear value 2.883658483 to 11.39491214.
-   * Six Stops Over = Red        Scene Linear value 11.39491214 to 16.29174024.
-   * High Clipping = White       Scene Linear value 16.29174024 and above.
+   * ```Low Clipping      Black    Scene Linear value 0.000176272 and below```
+   * ```Nine Stops Down  = Purple   Scene Linear value 0.000351384 to 0.000702411.```
+   * ```Eight Stops Down = Blue     Scene Linear value 0.000702411 to 0.002814643.```
+   * ```Six Stops Down   = Cyan     Scene Linear value 0.002814643 to 0.044567918.```
+   * ```Two Stops Down   = Green    Scene Linear value 0.044567918 to 0.018009142.```
+   * ```Middle Grey      = Gray     Scene Linear value 0.018009142.```
+   * ```Two Stops Over   = Green    Scene Linear value 0.719634476 to 2.883658483.```
+   * ```Four Stops Over  = Yellow   Scene Linear value 2.883658483 to 11.39491214.```
+   * ```Six Stops Over   = Red      Scene Linear value 11.39491214 to 16.29174024.```
+   * ```High Clipping    = White    Scene Linear value 16.29174024 and above.```
 
 **Eeek! Now my render looks awful!**
 
