@@ -1,6 +1,6 @@
 **What it does?**
 
-The “Default” view transform, also known as the specification transfer curve for sRGB was **never designed to be used for raytracing / rendering**.
+The “Default” view transform, also known as the specification transfer curve for sRGB was designed for displays and **never designed to be used for raytracing / rendering**.
 
 This set of transforms adds a photographic view transform for Blender. It is the ACES Shaper LMT that grabs ten stops below middle grey
 and six and a half stops over middle grey. Middle grey is pegged at 0.18, which maps to approximately 0.6
@@ -31,36 +31,31 @@ Given that the dynamic range of capture of your imagery is immediately augmented
 **Looks**
  * *None* This removes any additional transforms on the view.
  * *Scaled sRGB Grey variants* Some folks were having fits with the fact that the default view maps 0.18 middle grey to 0.606 in the display referred domain. This means that if you load an sRGB texture into Cycles, the middle grey point would be shifted away from the usual sRGB point of 0.466 that imagers expected. To alleviate this mental strain that is easily shifted during grading, the sRGB scaled grey variants were added as "training wheels". This allows an imager to confidently look at the various scaled looks to check on sRGB texture ratio mappings.
- * *Team Argentina -10-+6.5 Desaturation Basic* This view adds a convergence point towards display referred white.
-  The curve towards white begins at scene referred value 3.0 and converges all primaries towards white as their
-  intensity approaches scene referred 16.291. This emulates a basic filmic / DSLR "blow out" and helps shape
-  all colours to desaturate correctly, as opposed to without any desaturation / convergence / unity point.
- * *Team Argentina -10-+6.5 Desaturation Sharp 1.6-2.4* This is a range of looks that, in addition to the basic
-  desaturation described above, adds on an additional power curve to add contrast. This is designed to give
-  imagers a basic idea as to what a grade might look like when modified atop of the basic view with desaturation.
- * *Greyscale on Desaturation* This is a greyscale preview of the desaturated look helpful for evaluating
-  contrast and other details in some contexts.
+ * *Team Argentina -10-+6.5 Desaturation Basic* This view adds a convergence point towards display referred white. The curve towards white begins at scene referred value 3.0 and converges all primaries towards white as their intensity approaches scene referred 16.291. This emulates a basic filmic / DSLR "blow out" and helps shape all colours to desaturate correctly, as opposed to without any desaturation / convergence / unity point.
+ * *Team Argentina -10-+6.5 Desaturation Sharp 1.6-2.4* This is a range of looks that, in addition to the basic desaturation described above, adds on an additional power curve to add contrast. This is designed to give imagers a basic idea as to what a grade might look like when modified atop of the basic view with desaturation.
+ * *Greyscale on Desaturation* This is a greyscale preview of the desaturated look helpful for evaluating contrast and other details in some contexts.
  * *Greyscale* This is a greyscale preview without the desaturation look applied. As above.
  * *False Colour Basic* This is a false colour "heat map" of exposure. The colour scheme is as follows:
-   * Low Clipping = Black        = 1.762728758E-4 SL 1.081976960E-5 N
-   * Nine Stops Down = Purple    = 3.513840218E-4 SL 2.156823131E-5 N
-   * Eight Stops Down = Blue     = 7.024112686E-4 SL 4.311456347E-5 N
-   * Six Stops Down = Cyan       = 2.814643098E-3 SL 1.727650366E-4 N
-   * Two Stops Down = Green      = 4.456791864E-2 SL 2.735614366E-3 N
-   * Middle Grey = Gray          = 1.800914272E-1 SL 1.105415533E-2 N
-   * Two Stops Over = Green      = 7.196344767E-1 SL 4.417173771E-2 N
-   * Four Stops Over = Yellow    = 2.883658483E+0 SL 1.770012559E-1 N
-   * Six Stops Over = Red        = 1.139491214E+1 SL 6.994287888E-1 N
-   * High Clipping = White       = 1.629174024E+1 SL 1.000000000E+0 N
+ * * Low Clipping = Black        Scene Linear value 0.000176272 and below
+   * Nine Stops Down = Purple    Scene Linear value 0.000351384 to 0.000702411.
+   * Eight Stops Down = Blue     Scene Linear value 0.000702411 to 0.002814643.
+   * Six Stops Down = Cyan       Scene Linear value 0.002814643 to 0.044567918.
+   * Two Stops Down = Green      Scene Linear value 0.044567918 to 0.018009142.
+   * Middle Grey = Gray          Scene Linear value 0.018009142.
+   * Two Stops Over = Green      Scene Linear value 0.719634476 to 2.883658483.
+   * Four Stops Over = Yellow    Scene Linear value 2.883658483 to 11.39491214.
+   * Six Stops Over = Red        Scene Linear value 11.39491214 to 16.29174024.
+   * High Clipping = White       Scene Linear value 16.29174024 and above.
 
 **Eeek! Now my render looks awful!**
 
-When you use the -10+6.5 view LUT you'll find that your rendered output looks flat, washed out and desaturated.
-This is because the view has a logarithmic contrast curve which looks nowhere near the usual S-shaped contrast curve you find in the default sRGB view.
-The goal of this view is not providing a perceptually uniform image, but visual data about the exposure along the captured 16.5 stops from your scene's dynamic range. With this log view you'll be able to judge your lighting better, and determine whether your scene is properly exposed or not.
-It takes some time to get used to work with this kind of data, but meanwhile you can use one of the available sharpener looks that will apply a more perceptually uniform (hence more familiar) appearance.
-You can also use the false-color looks to get a visual representation of the exposure of your scene (where is middle gray, what is overexposed and underexposed, etc.)
-Keep in mind that in the lighting stage you're only taking care of the correct light exposure on your scene, not the final look. Once your scene is properly lit, you can accomplish the desired look through grading.
+When you use the -10+6.5 view LUT you may believe that your rendered output looks flat, washed out and desaturated. This is because the view has a logarithmic contrast curve which does not resemble the contrasted look of the default sRGB transform. The goal of this view is to roughly provide a perceptually uniform view of the data to evaluate the density across the full sixteen and a half stop range. With this log view you'll be able to judge your lighting better, and determine whether your scene is properly exposed or not.
+
+It may take some time to develop an eye for the data presented in the basic view. To this end, there are a series of "Sharp" looks that increase the contrast into the more typically expected ranges. These Looks are not applied directly to your data, but rather simply a transformation of your scene referred data into a rough shape that one might aim for when grading.
+
+The false-color looks can be leveraged to get a visual representation of the exposure of your scene and give an immediate representation as to where your image may be getting clipped at the head and the toe in the display referred transform.
+
+The transforms are designed to generate imagery that will be handed off to a grade for look application.
 
 **Help! Grading is tricky!**
 
