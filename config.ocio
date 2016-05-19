@@ -119,7 +119,7 @@ looks:
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
-      - !<FileTransform> {src: LMT_Power_22_sRGBScaled.spi1d, interpolation: best}
+      - !<FileTransform> {src: LMT_Power_22_sRGBScaled.spi1d, interpolation: linear}
 
   - !<Look>
     name: Scaled sRGB Grey with Desaturation
@@ -127,7 +127,7 @@ looks:
     transform: !<GroupTransform>
       children:
       - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
-      - !<FileTransform> {src: LMT_ACES_LMT_sRGBScaled.spi1d, interpolation: best}
+      - !<FileTransform> {src: LMT_ACES_LMT_sRGBScaled.spi1d, interpolation: linear}
 
   - !<Look>
     name: False Colour Basic
