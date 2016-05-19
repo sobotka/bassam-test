@@ -83,8 +83,8 @@ colorspaces:
       Standard RGB Display Space
     isdata: false
     allocation: uniform
-    allocationvars: [-0.125, 4.875]
-    to_reference: !<FileTransform> {src: srgb.spi1d, interpolation: linear}
+    allocationvars: [0.0, 1.0]
+    to_reference: !<FileTransform> {src: sRGB_to_linear.spi1d, interpolation: linear}
 
   - !<ColorSpace>
     name: Non-Color
@@ -112,16 +112,14 @@ looks:
     transform: !<GroupTransform>
       children:
       - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
-      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
-      - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
+      - !<FileTransform> {src: LMT_Power_22_sRGBScaled.spi1d, interpolation: linear}
 
   - !<Look>
     name: Scaled sRGB Grey with Sharp 2.2
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
-      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
-      - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
+      - !<FileTransform> {src: LMT_Power_22_sRGBScaled.spi1d, interpolation: best}
 
   - !<Look>
     name: Scaled sRGB Grey with Desaturation
@@ -129,7 +127,7 @@ looks:
     transform: !<GroupTransform>
       children:
       - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
-      - !<FileTransform> {src: LMT_Two_Part_Sharp.spi1d, interpolation: best}
+      - !<FileTransform> {src: LMT_ACES_LMT_sRGBScaled.spi1d, interpolation: best}
 
   - !<Look>
     name: False Colour Basic
