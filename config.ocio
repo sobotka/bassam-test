@@ -32,7 +32,7 @@ displays:
   sRGB:
     - !<View> {name: sRGB, colorspace: sRGB}
     - !<View> {name: Raw, colorspace: Raw}
-    - !<View> {name: -10-+6.5 View, colorspace: aces_lmt}
+    - !<View> {name: Wide Dynamic Range View, colorspace: aces_lmt}
 
   None:
     - !<View> {name: No View, colorspace: Raw}
@@ -98,7 +98,7 @@ colorspaces:
 
 looks:
   - !<Look>
-    name: -10-+6.5 Desaturation Basic
+    name: Desaturation Basic
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -157,7 +157,7 @@ looks:
       - !<MatrixTransform> {matrix: [0.2126729, 0.7151521, 0.0721750, 0, 0.2126729, 0.7151521, 0.0721750, 0, 0.2126729, 0.7151521, 0.0721750, 0, 0, 0, 0, 1]}
 
   - !<Look>
-    name: -10-+6.5 Desaturation Contrast 1.6
+    name: Desaturation Contrast 1.6
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -166,7 +166,7 @@ looks:
 
 
   - !<Look>
-    name: -10-+6.5 No Desaturation Contrast 1.6
+    name: No Desaturation Contrast 1.6
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -174,7 +174,7 @@ looks:
       - !<FileTransform> {src: LMT_Power_16.spi1d, interpolation: linear}
 
   - !<Look>
-    name: -10-+6.5 Desaturation Contrast 1.8
+    name: Desaturation Contrast 1.8
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -182,7 +182,7 @@ looks:
       - !<FileTransform> {src: LMT_Power_18.spi1d, interpolation: linear}
 
   - !<Look>
-    name: -10-+6.5 No Desaturation Contrast 1.8
+    name: No Desaturation Contrast 1.8
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -190,7 +190,7 @@ looks:
       - !<FileTransform> {src: LMT_Power_18.spi1d, interpolation: linear}
 
   - !<Look>
-    name: -10-+6.5 Desaturation Contrast 2.0
+    name: Desaturation Contrast 2.0
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -198,7 +198,7 @@ looks:
       - !<FileTransform> {src: LMT_Power_20.spi1d, interpolation: linear}
 
   - !<Look>
-    name: -10-+6.5 No Desaturation Contrast 2.0
+    name: No Desaturation Contrast 2.0
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -206,7 +206,7 @@ looks:
       - !<FileTransform> {src: LMT_Power_20.spi1d, interpolation: linear}
 
   - !<Look>
-    name: -10-+6.5 Desaturation Contrast 2.2
+    name: Desaturation Contrast 2.2
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -214,7 +214,7 @@ looks:
       - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
 
   - !<Look>
-    name: -10-+6.5 No Desaturation Contrast 2.2
+    name: No Desaturation Contrast 2.2
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -222,7 +222,7 @@ looks:
       - !<FileTransform> {src: LMT_Power_22.spi1d, interpolation: linear}
 
   - !<Look>
-    name: -10-+6.5 Desaturation Contrast 2.4
+    name: Desaturation Contrast 2.4
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
@@ -230,7 +230,7 @@ looks:
       - !<FileTransform> {src: LMT_Power_24.spi1d, interpolation: linear}
 
   - !<Look>
-    name: -10-+6.5 No Desaturation Contrast 2.4
+    name: No Desaturation Contrast 2.4
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
