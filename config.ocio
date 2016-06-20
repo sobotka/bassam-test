@@ -104,17 +104,8 @@ looks:
       children:
       - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
 
-
   - !<Look>
-    name: Scaled sRGB Grey with Desaturation with Contrast 2.2
-    process_space: aces_lmt
-    transform: !<GroupTransform>
-      children:
-      - !<FileTransform> {src: bassam-65-filmdesat.spi3d, interpolation: best}
-      - !<FileTransform> {src: LMT_Power_22_sRGBScaled.spi1d, interpolation: linear}
-
-  - !<Look>
-    name: Scaled sRGB Grey with Contrast 2.2
+    name: Scaled sRGB Grey
     process_space: aces_lmt
     transform: !<GroupTransform>
       children:
