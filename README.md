@@ -19,7 +19,7 @@ Given that the dynamic range of capture of your imagery is immediately augmented
 **What are the transforms?**
 
 **Views**
- * *-10-+6.5* This is the primary view mapping middle grey to 0.18 which ends up approximately 0.62 scene linear.
+ * *-10-+6.5* This is the primary view mapping middle grey to 0.18 which ends up approximately 0.60 scene referred linear.
  the basic view covers sixteen and a half stops of latitude, with ten stops down and six and a half stops above
  middle grey.
  * *Raw* This is an untransformed dump of the scene referred values to the display. Effectively meaningless.
@@ -31,21 +31,21 @@ Given that the dynamic range of capture of your imagery is immediately augmented
 **Looks**
  * *None* This removes any additional transforms on the view.
  * *Scaled sRGB Grey variants* Some folks were having fits with the fact that the default view maps 0.18 middle grey to 0.606 in the display referred domain. This means that if you load an sRGB texture into Cycles, the middle grey point would be shifted away from the usual sRGB point of 0.466 that imagers expected. To alleviate this mental strain that is easily shifted during grading, the sRGB scaled grey variants were added as "training wheels". This allows an imager to confidently look at the various scaled looks to check on sRGB texture ratio mappings.
- * *Team Argentina -10-+6.5 Desaturation Basic* This view adds a convergence point towards display referred white. The curve towards white begins at scene referred value 3.0 and converges all primaries towards white as their intensity approaches scene referred 16.291. This emulates a basic filmic / DSLR "blow out" and helps shape all colours to desaturate correctly, as opposed to without any desaturation / convergence / unity point.
- * *Team Argentina -10-+6.5 Desaturation Sharp 1.6-2.4* This is a range of looks that, in addition to the basic desaturation described above, adds on an additional power curve to add contrast. This is designed to give imagers a basic idea as to what a grade might look like when modified atop of the basic view with desaturation.
+ * *-10-+6.5 Desaturation Basic* This view adds a convergence point towards display referred white. The curve towards white begins at scene referred value 3.0 and converges all primaries towards white as their intensity approaches scene referred 16.291. This emulates a basic filmic / DSLR "blow out" and helps shape all colours to desaturate correctly, as opposed to without any desaturation / convergence / unity point.
+ * *-10-+6.5 Desaturation Contrast 1.6-2.4* This is a range of looks that, in addition to the basic desaturation described above, adds on an additional power curve to add contrast. This is designed to give imagers a basic idea as to what a grade might look like when modified atop of the basic view with desaturation.
  * *Greyscale on Desaturation* This is a greyscale preview of the desaturated look helpful for evaluating contrast and other details in some contexts.
  * *Greyscale* This is a greyscale preview without the desaturation look applied. As above.
  * *False Colour Basic* This is a false colour "heat map" of exposure. The colour scheme is as follows:
-   * ```Low Clipping      Black    Scene Linear value 0.000176272 and below```
-   * ```Nine Stops Down  = Purple   Scene Linear value 0.000351384 to 0.000702411.```
-   * ```Eight Stops Down = Blue     Scene Linear value 0.000702411 to 0.002814643.```
-   * ```Six Stops Down   = Cyan     Scene Linear value 0.002814643 to 0.044567918.```
-   * ```Two Stops Down   = Green    Scene Linear value 0.044567918 to 0.018009142.```
-   * ```Middle Grey      = Gray     Scene Linear value 0.018009142.```
-   * ```Two Stops Over   = Green    Scene Linear value 0.719634476 to 2.883658483.```
-   * ```Four Stops Over  = Yellow   Scene Linear value 2.883658483 to 11.39491214.```
-   * ```Six Stops Over   = Red      Scene Linear value 11.39491214 to 16.29174024.```
-   * ```High Clipping    = White    Scene Linear value 16.29174024 and above.```
+   * ```Low Clipping                 = Black    Scene Referred Linear value below 0.0001762728758.```
+   * ```Ten Stops Down               = Purple   Scene Referred Linear value 0.0001762728758.```
+   * ```Seven Stops Down             = Blue     Scene Referred Linear value 0.001404109349.```
+   * ```Four Stops Down              = Cyan     Scene Referred Linear value 0.01124714399.```
+   * ```Two Stops Down               = Green    Scene Referred Linear value 0.04456791864.```
+   * ```Middle Grey                  = Gray     Scene Referred Linear value 0.018009142.```
+   * ```Two Stops Over               = Green    Scene Referred Linear value 0.7196344767.```
+   * ```Four Stops Over              = Yellow   Scene Referred Linear value 2.883658483.```
+   * ```Five and a half Stops Over   = Red      Scene Referred Linear value 8.150007644.```
+   * ```High Clipping                = White    Scene Referred Linear value above 16.29174024.```
 
 **Eeek! Now my render looks awful!**
 
