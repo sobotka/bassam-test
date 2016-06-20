@@ -19,7 +19,7 @@ Given that the dynamic range of capture of your imagery is immediately augmented
 **What are the transforms?**
 
 **Views**
- * *-10-+6.5* This is the primary view mapping middle grey to 0.18 which ends up approximately 0.60 scene referred linear.
+ * *Wide Dynamic Range View* This is the primary view mapping middle grey to 0.18 which ends up approximately 0.60 scene referred linear.
  the basic view covers sixteen and a half stops of latitude, with ten stops down and six and a half stops above
  middle grey.
  * *Raw* This is an untransformed dump of the scene referred values to the display. Effectively meaningless.
@@ -31,8 +31,8 @@ Given that the dynamic range of capture of your imagery is immediately augmented
 **Looks**
  * *None* This removes any additional transforms on the view.
  * *Scaled sRGB Grey variants* Some folks were having fits with the fact that the default view maps 0.18 middle grey to 0.606 in the display referred domain. This means that if you load an sRGB texture into Cycles, the middle grey point would be shifted away from the usual sRGB point of 0.466 that imagers expected. To alleviate this mental strain that is easily shifted during grading, the sRGB scaled grey variants were added as "training wheels". This allows an imager to confidently look at the various scaled looks to check on sRGB texture ratio mappings.
- * *-10-+6.5 Desaturation Basic* This view adds a convergence point towards display referred white. The curve towards white begins at scene referred value 3.0 and converges all primaries towards white as their intensity approaches scene referred 16.291. This emulates a basic filmic / DSLR "blow out" and helps shape all colours to desaturate correctly, as opposed to without any desaturation / convergence / unity point.
- * *-10-+6.5 Desaturation Contrast 1.6-2.4* This is a range of looks that, in addition to the basic desaturation described above, adds on an additional power curve to add contrast. This is designed to give imagers a basic idea as to what a grade might look like when modified atop of the basic view with desaturation.
+ * *Desaturation Basic* This view adds a convergence point towards display referred white. The curve towards white begins at scene referred value 3.0 and converges all primaries towards white as their intensity approaches scene referred 16.291. This emulates a basic filmic / DSLR "blow out" and helps shape all colours to desaturate correctly, as opposed to without any desaturation / convergence / unity point.
+ * *Desaturation Contrast 1.6-2.4* This is a range of looks that, in addition to the basic desaturation described above, adds on an additional power curve to add contrast. This is designed to give imagers a basic idea as to what a grade might look like when modified atop of the basic view with desaturation.
  * *Greyscale on Desaturation* This is a greyscale preview of the desaturated look helpful for evaluating contrast and other details in some contexts.
  * *Greyscale* This is a greyscale preview without the desaturation look applied. As above.
  * *False Colour Basic* This is a false colour "heat map" of exposure. The colour scheme is as follows:
@@ -49,9 +49,9 @@ Given that the dynamic range of capture of your imagery is immediately augmented
 
 **Eeek! Now my render looks awful!**
 
-When you use the -10+6.5 view LUT you may believe that your rendered output looks flat, washed out and desaturated. This is because the view has a logarithmic contrast curve which does not resemble the contrasted look of the default sRGB transform. The goal of this view is to roughly provide a perceptually uniform view of the data to evaluate the density across the full sixteen and a half stop range. With this log view you'll be able to judge your lighting better, and determine whether your scene is properly exposed or not.
+When you use the Wide Dynamic Range View LUT you may believe that your rendered output looks flat, washed out and desaturated. This is because the view has a logarithmic contrast curve which does not resemble the contrasted look of the default sRGB transform. The goal of this view is to roughly provide a perceptually uniform view of the data to evaluate the density across the full sixteen and a half stop range. With this log view you'll be able to judge your lighting better, and determine whether your scene is properly exposed or not.
 
-It may take some time to develop an eye for the data presented in the basic view. To this end, there are a series of "Sharp" looks that increase the contrast into the more typically expected ranges. These Looks are not applied directly to your data, but rather simply a transformation of your scene referred data into a rough shape that one might aim for when grading.
+It may take some time to develop an eye for the data presented in the basic view. To this end, there are a series of "Contrast" looks that increase the contrast into the more typically expected ranges. These Looks are not applied directly to your data, but rather simply a transformation of your scene referred data into a rough shape that one might aim for when grading.
 
 The false-color looks can be leveraged to get a visual representation of the exposure of your scene and give an immediate representation as to where your image may be getting clipped at the head and the toe in the display referred transform.
 
