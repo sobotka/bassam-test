@@ -41,7 +41,7 @@ Given that the dynamic range of capture of your imagery is immediately augmented
    * ```Seven Stops Down             = Blue     Scene Referred Linear value 0.001404109349.```
    * ```Four Stops Down              = Cyan     Scene Referred Linear value 0.01124714399.```
    * ```Two Stops Down               = Green    Scene Referred Linear value 0.04456791864.```
-   * ```Middle Grey                  = Gray     Scene Referred Linear value 0.018009142.```
+   * ```Middle Grey                  = Gray     Scene Referred Linear value 0.18009142.```
    * ```Two Stops Over               = Green    Scene Referred Linear value 0.7196344767.```
    * ```Four Stops Over              = Yellow   Scene Referred Linear value 2.883658483.```
    * ```Five and a half Stops Over   = Red      Scene Referred Linear value 8.150007644.```
