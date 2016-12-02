@@ -12,7 +12,7 @@ display referred. Simply by using it your can elevate your work by an order of a
 
 **How do I use it?**
 
-Git clone this repository, backup your */blender/bin/[VERSION]/datafiles/colormanagement* directory, and replace or link the repository to its place. The view is currently located in the colour management panel of the Scene panel in Properties.
+Git clone this repository, backup your */blender/bin/[VERSION]/datafiles/colormanagement* (*C:\Program Files\Blender Foundation\Blender\[VERSION]\datafiles\colormanagement* on windows) directory, and replace or link the repository to its place. The view is currently located in the colour management panel of the Scene panel in Properties.
 
 Given that the dynamic range of capture of your imagery is immediately augmented by an order of a magnitude, you will have to adjust your lighting to compensate. This means adding significantly more light to achieve normal real-world values. When lighting under the default sRGB display transform, your lighting was artificially tamped down, and as a result there is a very good chance that your lighting was bogus, as well as many of your material decisions.
 
