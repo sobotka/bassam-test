@@ -1,3 +1,11 @@
+Do Not Use This
+===============
+
+This is a repository that was forwarded as a demonstration to answer [a question on Blender Stack Exchange](http://blender.stackexchange.com/questions/46825/render-with-a-wider-dynamic-range-in-cycles-to-produce-photorealistic-looking-im). It has evolved significantly and has been [superceded by Filmic Blender](https://sobotka.github.io/filmic-blender/). Please use [Filmic Blender](https://sobotka.github.io/filmic-blender/) instead of this repository. This repository remains for posterity's sake.
+
+Original README
+===============
+
 **What it does?**
 
 The “Default” view transform, also known as the specification transfer curve for sRGB was designed for displays and **never designed to be used for raytracing / rendering**.
